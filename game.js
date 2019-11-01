@@ -1,4 +1,3 @@
-//alert("fuck you");
 var wrong = 0;
 var toggle = false;
 var level = 0;
@@ -14,8 +13,6 @@ function nextSquence(){
     $("#" + randomChosenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
     playSound(randomChosenColor);
     level++;
-
-    
 }
 $(".btn").on("click", function(){
     var userChosenColor = this.id;
@@ -43,19 +40,20 @@ function animatePress(currentColor) {
 
 $(document).keypress(function(event){
     
-    if(!toggle){
+    if(toggle === false){
         if(event.key == "a" || event.key == "A"){ 
+            toggle = true;  
             console.log(toggle);
             $("#level-title").text("Level " + level);
             nextSquence();     
-            toggle = true;       
+                 
         }
     }
-
     if(wrong == 1){
+        wrong = 0;
         $("#level-title").text("Level " + level);
         nextSquence();     
-        wrong = 0;
+        
     }
 
     
