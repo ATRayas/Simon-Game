@@ -6,7 +6,7 @@ var gamePattern = [];
 var buttonColors = ["red", "blue", "green", "yellow"];
 function nextSquence(){
     userClickedPattern = [];
-    $("#level-title").text = ("level" + level);
+    $('#level-title').text = ("level" + level);
     var randomNumber = Math.floor((Math.random() * 4)); // gens random num from 0 to 3
     var randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
@@ -44,14 +44,15 @@ $(document).keypress(function(event){
         if(event.key == "a" || event.key == "A"){ 
             toggle = true;  
             console.log(toggle);
-            $("#level-title").text("Level " + level);
+            $('#level-title').text("Level " + level);
             nextSquence();     
                  
         }
     }
-    if(wrong == 1){
+    if(wrong === 1){
+        toggle = true;
         wrong = 0;
-        $("#level-title").text("Level " + level);
+        $('#level-title').text("Level " + level);
         nextSquence();     
         
     }
@@ -77,7 +78,7 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, delayInMilliseconds);
 
-        $("#level-title").text("Game Over, Press Any Key to Restart");
+        $('#level-title').text("Game Over, Press Any Key to Restart");
 
         startOver();
         console.log("wrong");
@@ -90,6 +91,6 @@ function startOver() {
     gamePattern = [];
     level = 0;
     userClickedPattern = [];
-    toggle = false;
+    
     
 }
