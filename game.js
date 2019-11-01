@@ -4,16 +4,7 @@ var level = 0;
 var userClickedPattern = [];
 var gamePattern = [];
 var buttonColors = ["red", "blue", "green", "yellow"];
-function nextSquence(){
-    userClickedPattern = [];
-    $('#level-title').text = ("level" + level);
-    var randomNumber = Math.floor((Math.random() * 4)); // gens random num from 0 to 3
-    var randomChosenColor = buttonColors[randomNumber];
-    gamePattern.push(randomChosenColor);
-    $("#" + randomChosenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    playSound(randomChosenColor);
-    level++;
-}
+
 $(".btn").on("click", function(){
     var userChosenColor = this.id;
     userClickedPattern.push(userChosenColor);
@@ -44,7 +35,7 @@ $(document).keypress(function(event){
         if(event.key == "a" || event.key == "A"){ 
             toggle = true;  
             console.log(toggle);
-            $('#level-title').text("Level " + level);
+            $("#level-title").text("Level " + level);
             nextSquence();     
                  
         }
@@ -52,13 +43,26 @@ $(document).keypress(function(event){
     if(wrong === 1){
         toggle = true;
         wrong = 0;
-        $('#level-title').text("Level " + level);
+        $("#level-title").text("Level " + level);
         nextSquence();     
         
     }
 
     
 });
+
+function nextSquence(){
+    userClickedPattern = [];
+    level++;
+    $("#level-title").text("Level " + level);
+    console.log(level);
+    var randomNumber = Math.floor((Math.random() * 4)); // gens random num from 0 to 3
+    var randomChosenColor = buttonColors[randomNumber];
+    gamePattern.push(randomChosenColor);
+    $("#" + randomChosenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    playSound(randomChosenColor);
+    
+}
 
 function checkAnswer(currentLevel) {
     if(gamePattern[currentLevel] === userClickedPattern[currentLevel]){
@@ -78,7 +82,7 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, delayInMilliseconds);
 
-        $('#level-title').text("Game Over, Press Any Key to Restart");
+        $("#level-title").text("Game Over, Press Any Key to Restart");
 
         startOver();
         console.log("wrong");
