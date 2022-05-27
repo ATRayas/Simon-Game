@@ -1,6 +1,6 @@
 # Simon-Game
 
-Simple website that utilizes JavaScript(jQuery) to mimic Simon's game.
+Simple website that utilizes JavaScript(jQuery) to mimic Simon's game. https://atrayas.github.io/Simon-Game/
 
 Tech: HTML, CSS, jQuery Year: 2019
 
